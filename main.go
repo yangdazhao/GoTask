@@ -8,10 +8,10 @@ import (
 )
 
 func main() {
-	user, err := user.Current()
+	user2, err := user.Current()
 	if nil == err {
-		fmt.Println(user.HomeDir + "\\Documents\\eTaxSH3")
-		fmt.Println(os.Chdir(user.HomeDir + "\\Documents\\eTaxSH3"))
+		// fmt.Println(user2.HomeDir + "\\Documents\\eTaxSH3")
+		fmt.Println(os.Chdir(user2.HomeDir + "\\Documents\\eTaxSH3"))
 	}
 
 	fmt.Println(os.Getenv("USERPROFILE"))
