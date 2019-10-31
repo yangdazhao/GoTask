@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/robfig/cron"
 	"io/ioutil"
+	"os/user"
 	"strings"
 	"time"
 )
@@ -31,6 +32,9 @@ func AR3700BackDat() {
 			strings.ReplaceAll(time.Now().Format("20060102T150405_GROUP.dat"), "GROUP", v), Group)
 		_ = c.AddJob(spec, Job.BackFileJob{v + ".dat"})
 	}
+	user2, _ := user.Current()
+	Job.CleanDir(user2.HomeDir + "\\Documents\\eTaxSH3")
+	_ = c.AddJob(spec, Job.CleanJob{user2.HomeDir + "\\Documents\\eTaxSH3"})
 	//启动计划任务
 	c.Start()
 	//关闭着计划任务, 但是不能关闭已经在执行中的任务.

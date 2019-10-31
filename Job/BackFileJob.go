@@ -20,9 +20,7 @@ func CopyFile(dstFileName string, srcFileName string) (written int64, err error)
 	}
 
 	defer srcFile.Close()
-
 	//打开dstFileName
-
 	dstFile, err := os.OpenFile(dstFileName, os.O_WRONLY|os.O_CREATE, 0755)
 	if err != nil {
 		fmt.Printf("open file err = %v\n", err)
